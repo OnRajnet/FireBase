@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "339763321615",
+    "project_id": "walksetup",
+    "storage_bucket": "walksetup.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:339763321615:android:99cc857ab3a68921ad3c7a",
+        "android_client_info": {
+          "package_name": "com.rajnet.ondrej.firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "339763321615-fa374l7h1nb9dk6l410cnof4qcl9doid.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rajnet.ondrej.firebase",
+            "certificate_hash": "1bf876d61731862b3dc266ae13f3199fc835cc9f"
+          }
+        },
+        {
+          "client_id": "339763321615-msjjcjv36au8ftnosq68san2cefioak7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXQjLzAc0VnjQ72FCzbuerr7r0QLnKlFk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "339763321615-msjjcjv36au8ftnosq68san2cefioak7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
