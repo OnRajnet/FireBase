@@ -4,10 +4,13 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_get_data.*
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.rv_layout.*
 
 class GetData : AppCompatActivity() {
 
@@ -19,9 +22,11 @@ class GetData : AppCompatActivity() {
         setContentView(R.layout.activity_get_data)
 
         database = FirebaseDatabase.getInstance()
-        referance = database.getReference("Users")
+        referance = database.getReference("Steps")
 
         getData()
+
+
     }
 
     private fun getData(){
@@ -44,5 +49,6 @@ class GetData : AppCompatActivity() {
 
 
         })
+
     }
 }
