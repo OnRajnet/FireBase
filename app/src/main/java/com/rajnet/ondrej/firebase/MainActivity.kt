@@ -8,7 +8,12 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
@@ -16,8 +21,13 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), SensorEventListener {
 
+    private companion object{
+        private const val TAG = "MainActivity"
+    }
+
     private lateinit var database: FirebaseDatabase
     private lateinit var referance: DatabaseReference
+    private lateinit var auth: FirebaseAuth
 
     private var sensorManager: SensorManager? = null
 
@@ -29,13 +39,14 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-
+        auth = Firebase.auth
         database = FirebaseDatabase.getInstance()
         referance = database.getReference("Steps")
 
         btn_send.setOnClickListener{
             sendData()
+            Toast.makeText(this, "Tvůj pokus uložen!", Toast.LENGTH_SHORT).show()
+
         }
         btn_getData.setOnClickListener{
             startActivity(Intent(applicationContext, GetData::class.java))
@@ -98,6 +109,22 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         }else{
             Toast.makeText(applicationContext,"Vše musí být vyplněno", Toast.LENGTH_LONG).show()
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.miLogout) {
+            Log.i(TAG, "Logout")
+            auth.signOut()
+            val logouIntent = Intent(this, Login::class.java)
+            logouIntent.flags= Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(logouIntent )
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }
